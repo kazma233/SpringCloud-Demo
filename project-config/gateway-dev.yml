@@ -1,0 +1,48 @@
+server:
+  port: 9500
+opentracing:
+  jaeger:
+    udp-sender:
+      host: 192.168.1.104
+      port: 6831
+spring:
+  redis:
+    host: 192.168.1.104
+    port: 6379
+    password: pw123456
+    database: 0
+    timeout: 10S
+  cloud:
+    gateway:
+      routes:
+        - id: order-service
+          uri: 'http://192.168.1.233:9300'
+          predicates:
+            - Path=/order-service/**
+          filters:
+            - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: SLOW
+                fallbackUri: 'forward:/fallback/order'
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 2
+                redis-rate-limiter.requestedTokens: 1
+                key-resolver: '#{@limitKeyResolver}'
+        - id: product-service
+          uri: 'http://192.168.1.233:9200'
+          predicates:
+            - Path=/product-service/**
+          filters:
+            - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: SLOW
+                fallbackUri: 'forward:/fallback/product'
+          
+                
+logging:
+  level:
+    org.springframework.cloud: debug

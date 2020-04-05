@@ -1,0 +1,32 @@
+server:
+  port: 9200
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.1.104:3306/SpringCloud_Sell?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: pw123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  rabbitmq:
+    host: 192.168.1.104
+    username: admin
+    password: pw123456
+    port: 5672
+    connection-timeout: 10s
+    
+opentracing:
+  jaeger:
+    udp-sender:
+      host: 192.168.1.104
+      port: 6831
+
+logging:
+  level:
+    org.springframework.cloud: debug
+
+config:
+  data: cool

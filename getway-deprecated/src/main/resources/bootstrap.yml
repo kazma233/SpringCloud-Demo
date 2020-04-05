@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: api-getway
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-9101
+      profile: p9401
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.233:9000/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 5 #每隔5s发送一次心跳
+    lease-expiration-duration-in-seconds: 10 #每隔十秒检查续约时间

@@ -1,0 +1,44 @@
+### refresh config
+POST http://127.0.0.1:9101/actuator/bus-refresh HTTP/1.1
+### get config
+GET http://127.0.0.1:9101/order-p9301.yml HTTP/1.1
+### create order use getway
+POST http://127.0.0.1:9401/product/product/list HTTP/1.1
+Content-Type: application/json
+
+{
+
+}
+
+
+### get product list by product
+GET http://127.0.0.1:9201/product/list HTTP/1.1
+
+### create order by order
+POST http://127.0.0.1:9300/order/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"小泽",
+    "phone":"18811112222",
+    "address":"后海",
+    "openid":"2333",
+    "items":"[{\"productId\":\"164103465734242707\",\"productQuantity\":3}, {\"productId\":\"157875196366160022\",\"productQuantity\":2}]"
+}
+
+### gateway
+
+### create order by gateway
+POST http://127.0.0.1:9500/order-service/order/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"小泽",
+    "phone":"18811112222",
+    "address":"后海",
+    "openid":"2333",
+    "items":"[{\"productId\":\"164103465734242707\",\"productQuantity\":3}, {\"productId\":\"157875196366160022\",\"productQuantity\":2}]"
+}
+
+### get product list by gateway
+GET http://127.0.0.1:9500/product-service/product/list HTTP/1.1

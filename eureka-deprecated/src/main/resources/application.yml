@@ -1,0 +1,19 @@
+eureka:
+  client:
+    service-url:
+#      defaultZone: http://192.168.1.233:9001/eureka/,http://192.168.1.233:9002/eureka/ # 高可用
+      defaultZone: http://192.168.1.233:9000/eureka/ # 单个注册中心
+    # 是否将自己注册到eureka server
+    register-with-eureka: false
+    # 是否从其他eureka server获取信息, 因为这里是单节点，不需要
+    fetch-registry: false
+  server:
+    enable-self-preservation: false # eureka自我保护 适用于开发环境
+  instance:
+    hostname: eureka-server-9000
+#    prefer-ip-address: false # true就可以将IP注册到Eureka Server上，而如果不配置就是机器的主机名。
+spring:
+  application:
+    name: eureka-server
+server:
+  port: 9000

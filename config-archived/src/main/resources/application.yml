@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: config-9101
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/kazma-ly/imooc-shop-service-config.git
+          basedir: ./config # 设置默认的存储位置 注意会覆盖文件夹下的所有文件
+          # username:
+          # password:
+  rabbitmq:
+    host: 192.168.1.103
+    username: admin
+    password: pw123456
+    port: 5672
+    connection-timeout: 1m
+
+server:
+  port: 9101
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.233:9000/eureka/
+  instance:
+    hostname: 192.168.1.233
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        exposed-headers: "*"

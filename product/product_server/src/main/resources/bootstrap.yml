@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: product-service
+  profiles:
+    active: dev
+  cloud:
+    consul:
+      host: 192.168.1.104
+      port: 8500
+      discovery:
+        enabled: true
+        register: true
+        deregister: true
+        hostname: 192.168.1.233
+      config:
+        enabled: true
+        format: YAML
+        prefix: config
+        default-context: ${spring.application.name}
+        profile-separator: '::'
+        data-key: data
