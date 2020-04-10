@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: dev1
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.203.157:8848
+      config:
+        server-addr: 192.168.203.157:8848
+        file-extension: yml

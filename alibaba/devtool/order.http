@@ -1,0 +1,7 @@
+@localurl = http://127.0.0.1:9300
+
+###
+post {{localurl}}/orders HTTP/1.1
+
+###
+GET {{localurl}}/orders/echo?echo=haha HTTP/1.1
