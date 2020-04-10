@@ -10,6 +10,7 @@
 
     <modules>
         <module>product-service</module>
+        <module>order-service</module>
         <module>common</module>
         <module>rpc-interface</module>
     </modules>
