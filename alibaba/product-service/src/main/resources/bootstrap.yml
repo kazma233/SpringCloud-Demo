@@ -16,6 +16,6 @@ dubbo:
     base-packages: com.ali.product.service
   protocol:
     name: dubbo
-    port: 12346
+    port: -1
   registry:
-    address: N/A
+    address: spring-cloud://localhost
