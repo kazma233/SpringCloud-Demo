@@ -25,6 +25,7 @@ public class HystrixController {
 //            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
 //    })
     @HystrixCommand(fallbackMethod = "breakHandle",commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000"),
             @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),
             // 最小请求数 This property sets the minimum number of requests in a rolling window that will trip the circuit.
             @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
@@ -37,7 +38,7 @@ public class HystrixController {
     public String getProductList() {
         RestTemplate restTemplate = new RestTemplate();
         String res = restTemplate.postForObject(
-                "http://127.0.0.1:9201/product/listForOrder",
+                "http://127.0.0.1:9200/product/listForOrder",
                 Collections.singletonList("164103465734242707"),
                 String.class);
         return res;

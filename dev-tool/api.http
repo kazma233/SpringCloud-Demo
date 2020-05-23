@@ -1,3 +1,5 @@
+@order-api = http://127.0.0.1:9300
+
 ### refresh config
 POST http://127.0.0.1:9101/actuator/bus-refresh HTTP/1.1
 ### get config
@@ -42,3 +44,6 @@ Content-Type: application/json
 
 ### get product list by gateway
 GET http://127.0.0.1:9500/product-service/product/list HTTP/1.1
+
+###
+GET {{order-api}}/getProductList HTTP/1.1

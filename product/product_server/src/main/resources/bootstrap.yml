@@ -5,13 +5,13 @@ spring:
     active: dev
   cloud:
     consul:
-      host: 192.168.1.104
+      host: 172.29.192.26
       port: 8500
       discovery:
         enabled: true
         register: true
         deregister: true
-        hostname: 192.168.1.233
+        hostname: 192.168.1.105
       config:
         enabled: true
         format: YAML

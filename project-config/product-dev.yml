@@ -1,8 +1,11 @@
+config:
+  main-host: 172.29.192.26
+
 server:
   port: 9200
 spring:
   datasource:
-    url: jdbc:mysql://192.168.1.104:3306/SpringCloud_Sell?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://${config.main-host}:3306/SpringCloud_Sell?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
     password: pw123456
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -12,7 +15,7 @@ spring:
     hibernate:
       ddl-auto: none
   rabbitmq:
-    host: 192.168.1.104
+    host: ${config.main-host}
     username: admin
     password: pw123456
     port: 5672
@@ -21,12 +24,9 @@ spring:
 opentracing:
   jaeger:
     udp-sender:
-      host: 192.168.1.104
+      host: ${config.main-host}
       port: 6831
 
 logging:
   level:
     org.springframework.cloud: debug
-
-config:
-  data: cool

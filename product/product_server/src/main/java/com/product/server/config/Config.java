@@ -11,6 +11,6 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("config")
 public class Config {
 
-    private String data;
+    private String host;
 
 }
